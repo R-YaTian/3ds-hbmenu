@@ -34,7 +34,7 @@ void textInit(void)
 		u8 lang;
 		res = CFGU_GetSystemLanguage(&lang);
 		if (R_SUCCEEDED(res))
-			s_textLang = lang;
+			s_textLang = CFG_LANGUAGE_ZH;
 		cfguExit();
 	}
 }
