@@ -21,7 +21,7 @@ jobs:
       options: --user 1001 # runner user, for git safedir
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         submodules: recursive # we currently don't use submodules, but just in case...
         fetch-depth: 0 # deep clone (for git describe)
@@ -35,7 +35,7 @@ jobs:
       run: make -j$(nproc --all)
     - name: Publish boot.3dsx (only on manual run or release)
       if: github.event_name == 'workflow_dispatch' || github.event_name == 'release'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         # This produces a zip with boot.3dsx inside for security reasons
         # For publish_release this is presented as boot.3dsx however
