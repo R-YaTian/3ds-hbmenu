@@ -341,7 +341,7 @@ static void send3DSXFile(in_addr_t inaddr, char *name, FILE *fh)
 		goto _cleanup;
 	}
 
-	size_t totalsent = 0, blocks = 0;
+	// size_t totalsent = 0, blocks = 0;
 
 	do
 	{
@@ -378,8 +378,8 @@ static void send3DSXFile(in_addr_t inaddr, char *name, FILE *fh)
 					goto _cleanup;
 				}
 
-				totalsent += have;
-				blocks++;
+				// totalsent += have;
+				// blocks++;
 			}
 		} while (strm.avail_out == 0);
 		// done when last data in file processed

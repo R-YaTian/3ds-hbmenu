@@ -336,12 +336,11 @@ bool menuEntryLoad(menuEntry_s* me, const char* name, bool shortcut)
 			struct dirent* dp;
 
 			if (dir) {
-				int index = 0;
 				while ((dp = readdir(dir))) {
 					if (dp->d_name[0] == '.')
 						continue;
 
-					for (fileAssocEntry = menuFileAssoc->firstEntry, index = 0; fileAssocEntry; fileAssocEntry = fileAssocEntry->next, index++) {
+					for (fileAssocEntry = menuFileAssoc->firstEntry; fileAssocEntry; fileAssocEntry = fileAssocEntry->next) {
 						if (!fileAssocEntry->fileAssocType)
 							continue;
 
@@ -482,10 +481,9 @@ bool menuEntryLoad(menuEntry_s* me, const char* name, bool shortcut)
 		if (menuFileAssoc->nEntries == 0)
 			return false;
 
-		int index = 0;
 		char* strptr;
 
-		for (fileAssocEntry = menuFileAssoc->firstEntry, index = 0; fileAssocEntry; fileAssocEntry = fileAssocEntry->next, index++) {
+		for (fileAssocEntry = menuFileAssoc->firstEntry; fileAssocEntry; fileAssocEntry = fileAssocEntry->next) {
 			if (!fileAssocEntry->fileAssocType)
 				strptr = getExtension(me->path);
 
